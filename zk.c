@@ -2,7 +2,6 @@
 
 #include "zk.h"
 #include <string.h>
-#include <pbc/pbc_test.h>
 
 void zk_gen(zk_master_t master, pairing_t pairing) {
     master->param->pairing = pairing;
