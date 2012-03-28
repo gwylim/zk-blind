@@ -12,6 +12,7 @@ The GNU MP library is also necessary, since it is used by PBC.
 ## ID-based signature
 
 An ID-based signature consists of four procedures:
+
 1. *KeyGen*: creates a master key and master public key.
 2. *Extract*: creates a private key given the master (private) key and a string identifier ID.
 3. *Sign*: signs a string using a private key for a particular ID.
@@ -24,6 +25,7 @@ as their name).
 ## Blind signature
 
 A blind signature scheme consists of three procedures:
+
 1. *KeyGen*: creates a private key and public key.
 2. *Sign*: A protocol undertaken between someone possessing a piece of information to be signed and
    someone possessing the private key to sign it. The former obtains exactly one signature from the
