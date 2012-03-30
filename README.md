@@ -9,6 +9,11 @@ pairing over an elliptic curve group. The PBC library (http://crypto.stanford.ed
 is used for this purpose, and any pairing that is supported by this library can be used.
 The GNU MP library is also necessary, since it is used by PBC.
 
+Also included is a haskell binding. Unfortunately, PBC uses GNU MP, which is also used
+by GHC to implement haskell Integer. There is some sort of interaction here, which results
+in strange behavior when using a C library via the FFI that itself uses GNU MP. As such,
+you will have to recompile GHC to not use GMP in order to use the binding.
+
 ## ID-based signature
 
 An ID-based signature consists of four procedures:
