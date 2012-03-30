@@ -70,41 +70,23 @@ int zk_verify(unsigned char *signature, int datalen, unsigned char *data, zk_par
 
 // Length functions
 
-static inline int zk_param_length_in_bytes(pairing_t pairing) {
-    return pairing_length_in_bytes_compressed_G2(pairing) * 2;
-}
+int zk_param_length_in_bytes(pairing_t pairing);
 
-static inline int zk_master_length_in_bytes(pairing_t pairing) {
-    return zk_param_length_in_bytes(pairing) + pairing_length_in_bytes_Zr(pairing);
-}
+int zk_master_length_in_bytes(pairing_t pairing);
 
-static inline int zk_private_length_in_bytes(pairing_t pairing) {
-    return zk_param_length_in_bytes(pairing) + pairing_length_in_bytes_compressed_G2(pairing);
-}
+int zk_private_length_in_bytes(pairing_t pairing);
 
-static inline int zk_sign_init_length_in_bytes(pairing_t pairing) {
-    return pairing_length_in_bytes_compressed_G1(pairing);
-}
+int zk_sign_init_length_in_bytes(pairing_t pairing);
 
-static inline int zk_sign_init_factor_length_in_bytes(pairing_t pairing) {
-    return pairing_length_in_bytes_Zr(pairing);
-}
+int zk_sign_init_factor_length_in_bytes(pairing_t pairing);
 
-static inline int zk_blinded_length_in_bytes(pairing_t pairing) {
-    return pairing_length_in_bytes_Zr(pairing);
-}
+int zk_blinded_length_in_bytes(pairing_t pairing);
 
-static inline int zk_blinding_factor_length_in_bytes(pairing_t pairing) {
-    return pairing_length_in_bytes_Zr(pairing)+pairing_length_in_bytes_G1(pairing);
-}
+int zk_blinding_factor_length_in_bytes(pairing_t pairing);
 
-static inline int zk_blinded_signature_length_in_bytes(pairing_t pairing) {
-    return pairing_length_in_bytes_compressed_G1(pairing);
-}
+int zk_blinded_signature_length_in_bytes(pairing_t pairing);
 
-static inline int zk_signature_length_in_bytes(pairing_t pairing) {
-    return 2*pairing_length_in_bytes_compressed_G1(pairing);
-}
+int zk_signature_length_in_bytes(pairing_t pairing);
 
 #ifdef __cplusplus
 }
