@@ -217,10 +217,13 @@ unblind (ZkParam param) signature blindingFactor = unsafePerformIO $ do
 
 foreign import ccall zk_verify :: Ptr CChar -> CInt -> Ptr CChar -> Ptr ZkParam -> CInt -> Ptr CChar -> IO CInt
 
-verify :: ZkParam -> ByteString -> ByteString -> ByteString -> CInt
+verify :: ZkParam -> ByteString -> ByteString -> ByteString -> Bool
 verify (ZkParam param) id s signature = unsafePerformIO $ do
   withForeignPtr param $ \paramPtr -> do
   useAsCStringLen id $ \(id, idLen) -> do
   useAsCStringLen s $ \(s, sLen) -> do
   useAsCStringLen signature $ \(signature, signatureLen) -> do
-  zk_verify signature (toEnum sLen) s paramPtr (toEnum idLen) id
+  result <- zk_verify signature (toEnum sLen) s paramPtr (toEnum idLen) id
+  if result == 0
+     then return False
+     else return True
